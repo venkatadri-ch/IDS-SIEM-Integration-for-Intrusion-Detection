@@ -23,7 +23,8 @@ To implement a real-time security monitoring system by integrating Snort IDS wit
 - Security Monitoring and Threat Detection Concepts – Understanding how to detect and analyze suspicious activities.
 
 - Network Traffic Analysis – Capturing and interpreting logs from IDS tools for network security insights.
-
+- SPL - Search Processing Language is Splunk's query language, used to search, analyze, and visualize machine data indexed in Splunk
+ 
  ### Tools Used
 
 - Splunk Enterprise – For centralized log management, analysis, dashboards, and alerting (installed on Windows).
@@ -55,6 +56,156 @@ To implement a real-time security monitoring system by integrating Snort IDS wit
   I’ll be installing and configuring Splunk’s universal forwarder, Snort in the ubuntu virtual machine as well as a Splunk enterpriser server in windows from scratch in the following steps
 
   ### Step 1
+  ## Downloading and Installing splunk enterpriser
+
+  To download the splunk enterpriser go to their official page and under products you will see free Trails and Downloads as following image below
+
+  ![image](https://github.com/user-attachments/assets/38c552d9-aeb9-46b9-bc83-2dbcc5254297)
+
+  When you click on that Free Trails and Downloads , there will be splunk enterpriser as shown in below
+
+  ![image](https://github.com/user-attachments/assets/bd21a7b3-5552-46f2-9207-e724abebd529)
+
+  when you click on get my free trail it will ask you to sign up , so proceed with that
+
+  ![image](https://github.com/user-attachments/assets/dba83595-d193-414c-b1b1-5b6168eea2ea)
+
+  login with your credentials and click on the download now
+
+  ![image](https://github.com/user-attachments/assets/37225414-1d3d-47b0-ab73-524c5f64d1af)
+
+## Install splunk enterpriser
+
+Double click on the downloaded msi file , choose customize Options tab
+
+![image](https://github.com/user-attachments/assets/577b0f27-bff0-466c-9718-8e77dad28bb6)
+
+click on next and choose Local system in next step then give your own credentials 
+
+![image](https://github.com/user-attachments/assets/75493975-10ba-4e9d-acdc-9c073d2439f0)
+
+click on install,it will start installing and it will take some time to complete installation 
+
+![image](https://github.com/user-attachments/assets/24e5aaa6-b127-4608-928f-e06c0d6c37c6)
+
+### step 2
+open the splunk enterpriser by using search tab in taskbar 
+
+![image](https://github.com/user-attachments/assets/5b82c6e4-8679-49e7-81c2-7886b3000f9d)
+
+login with your credentials (those given while installing splunk ) and it's interface will be like as below 
+
+![image](https://github.com/user-attachments/assets/e7cf0be8-38e4-4284-b54c-3ca1659df1d0)
+
+### step 3
+### configure the forwarding and receiving
+click on the settings , under DATA there will be Forwarding and Receiving, choose that option 
+
+![image](https://github.com/user-attachments/assets/d64719e9-a22f-4ae8-8ef9-842173dc702b)
+
+click on the "+Add new" at the Receive data 
+
+![image](https://github.com/user-attachments/assets/8ed0fad2-1be2-4976-a886-22372cdf2f2a)
+
+i will go with default port which is 9997 in my case
+
+![image](https://github.com/user-attachments/assets/64dd28c8-83a4-4d3a-a3d4-4c17f2cd40c0)
+
+ we had done with adding receiving port
+
+ ![image](https://github.com/user-attachments/assets/b8c38c80-c5dd-419e-92e3-15558e209fdc)
+
+### step 4
+## Creating new index 
+click on the settings tab and choose indexes under DATA
+
+![image](https://github.com/user-attachments/assets/0a3560df-cdb0-452e-8984-48404144a8af)
+
+click on New Index 
+![image](https://github.com/user-attachments/assets/eba36327-9d18-4dcd-804d-1cfd8c65a92e)
+
+choose your index name and edit other settings if you want , in my case i will go with default settings after done with index name 
+
+![image](https://github.com/user-attachments/assets/3553cf17-4ab8-46be-a638-e6b6e5bdc2e4)
+
+### Step 5 
+## Downloading,installing and configurating the splunk universal forwarder in ubuntu virtual machine 
+
+To download splunk universal forwarder, go to the free Trails and Downloads
+and choose 64 bit .tgz file
+
+
+![image](https://github.com/user-attachments/assets/490829e5-9429-47df-972e-c0066d1e97b5)
+
+After completion of downloading splunk forwarder , open terminal and go to the downloads directory by typing "cd Downloads" then use following following command to unpack the content in current directory 
+"tar xvzf <splunk forwarder name>" as shown in below.
+
+![image](https://github.com/user-attachments/assets/243d807c-1458-44af-bad8-22e77ae05552)
+
+move the splunk forwarder folder or directory to the /opt folder
+Note:The /opt directory in Linux is used to store optional or third-party software that is not managed by the system's package manager.
+
+![image](https://github.com/user-attachments/assets/44cfee9b-dc4f-4a62-8946-8d9ab85a0ae8)
+
+creating a dedicated splunk user (or similar) is a good security best practice, though not strictly required. By default, Splunk Universal Forwarder runs as the user who installs or starts it, often root—which is not ideal for security.
+
+![image](https://github.com/user-attachments/assets/10c938bf-12a2-45b5-b541-56db955ae0c8)
+
+Change Ownership of Splunk Forwarder Directory as shown below:
+
+![image](https://github.com/user-attachments/assets/19985bb9-ab7b-43d5-ada5-0385e265d9ed)
+
+check the ownership of Splunk Forwarder Directory
+
+![image](https://github.com/user-attachments/assets/6d8d41f1-87c1-431f-b4fe-f57340eccb56)
+
+Use this command "./splunk start --accept-license"  to start the Splunk software for the first time, while automatically accepting the license agreement.
+Note:it will ask for administrator username and password give them 
+
+![image](https://github.com/user-attachments/assets/5eb0b9cb-2808-423f-a7a3-b98dc8ca16d3)
+
+configure the splunk universal forwarder in ubuntu virtual machine to send data to the splunk server 
+The command:./splunk add forward-server ip port is used to configure the Splunk Universal Forwarder to send data to a Splunk indexer (or intermediate heavy forwarder) tomdo this we need to login as splunk user.
+Note: IP address(host os ip) and port(9997) of the receiving Splunk instance.
+![image](https://github.com/user-attachments/assets/99c123c4-2711-4de1-b614-aa879c714166)
+
+Use ./splunk add monitor /var/log -index indexname to monitor those logs
+
+![image](https://github.com/user-attachments/assets/f8654ad8-66d9-411d-ad05-debad038b26d)
+
+
+### step 6
+
+check the splunk server to know that splunk universal forwarder sending data to the  splunk server.
+
+![image](https://github.com/user-attachments/assets/b681bcd8-c8bf-42da-9d54-1c4626a44fff)
+
+ Click on the Search and Reporting and in search field type index="ubuntu"
+
+ ![image](https://github.com/user-attachments/assets/ade50675-4b17-4fc7-93af-8f8da8a6af00)
+
+ ![image](https://github.com/user-attachments/assets/aad910a7-02fc-491b-b739-0ce6d42f5f59)
+
+### step 7
+I choose create a dashboard in splunk server related to failed login attempts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 
   
