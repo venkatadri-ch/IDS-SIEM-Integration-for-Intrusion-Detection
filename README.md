@@ -50,7 +50,11 @@ To implement a real-time security monitoring system by integrating Snort IDS wit
 
   ![integration fo an IDS with a SIEM solution for intrusion monitoring](https://github.com/user-attachments/assets/845a92fe-868d-40ea-9806-c6f100cb131d)
 
-  ### Steps
+  ### STEPS
+
+  I’ll be installing and configuring Splunk’s universal forwarder, Snort in the ubuntu virtual machine as well as a Splunk enterpriser server in windows from scratch in the following steps
+
+  ### Step 1
 
 
   
