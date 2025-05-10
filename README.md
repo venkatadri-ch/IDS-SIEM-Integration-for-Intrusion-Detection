@@ -187,11 +187,60 @@ check the splunk server to know that splunk universal forwarder sending data to 
  ![image](https://github.com/user-attachments/assets/aad910a7-02fc-491b-b739-0ce6d42f5f59)
 
 ### step 7
-In this step I choose create a basic dashboard in splunk server related to failed login attempts.
-I write an SPL related to authentication failure , which tells that login failure because of incorrect passward
+In this step I choose to create a basic dashboard in splunk server related to failed login attempts. Wrote an spl search query to know the authentication failure's and click on the save as New dashboard:
+
+![image](https://github.com/user-attachments/assets/d68d0f90-6a4b-405e-a021-29f6abfbedfd)
 
 
+Give Dash Board title, choose CLassic Dashboards and click on the Save to dashboard
 
+![image](https://github.com/user-attachments/assets/dc9fecf4-795c-4f82-a315-3fab0c885599)
+
+Go to the dashboards tab and select on the Dashboard , which is created earlier  
+ 
+![image](https://github.com/user-attachments/assets/0a0b2f96-cda7-4941-afe2-71f7e1a6d86c)
+
+### Step 8
+### Creating a real-time alert to monitor the client in real time. (I created an alert for authorization failures occurring in real time in this step.)
+
+Write a search query to detect authentication failures, then click on the 'Save As' tab and select the 'Alert' option.
+
+![image](https://github.com/user-attachments/assets/707af302-250b-43b9-a97d-f4abc79a3f5b)
+
+Edit the alert as per your needs and click on save. I have edited it as follows:
+
+![image](https://github.com/user-attachments/assets/264258ea-da07-4b6d-ae81-1cdf117ac780)
+
+we have done with creation of Real-time alert
+
+![image](https://github.com/user-attachments/assets/3114ce43-d88e-4ebc-b67c-ce5914b0e84b)
+
+when i gave wrong password to login into the ubuntu virtual machine (snort user):
+![image](https://github.com/user-attachments/assets/7f06fe89-afa4-48ff-aca5-324f4183fcc8)
+
+it will give us a real-time alert:
+
+![image](https://github.com/user-attachments/assets/9b19d671-3b45-42e4-a73a-0c419de46d02)
+
+### Step 9
+In this step, I will Attempt unauthorized access to the target machine (Ubuntu virtual machine ) using Kali Linux (attacking machine).
+Note: snort is the user , which was created in ubuntu.You can see my attacking virtual machine ip address below:
+
+![image](https://github.com/user-attachments/assets/fe248df4-fdc1-4dd6-aed7-7ad3b55c5a4e)
+
+The command "ssh user@ip_address" is used to initiate an SSH (Secure Shell) connection to a remote machine , which i have used below to get access to the target machine with wrong password.
+
+![image](https://github.com/user-attachments/assets/b75258b8-a3a5-4ef5-b30c-531994ae4cff)
+
+### Step 10 
+## Results 
+
+when we click on the activity we can see triggered  alerts click on that to see Real-Time Alerts 
+![image](https://github.com/user-attachments/assets/af15d67c-3be4-4b32-8268-d49218b6ab93)
+
+When we Navigate to the Dashboard we can see rhost(attacking machine) ip address:
+
+![image](https://github.com/user-attachments/assets/183f6dba-faa0-401f-b128-4acb4c4933a4)
 
 
 
