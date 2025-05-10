@@ -187,7 +187,8 @@ check the splunk server to know that splunk universal forwarder sending data to 
  ![image](https://github.com/user-attachments/assets/aad910a7-02fc-491b-b739-0ce6d42f5f59)
 
 ### step 7
-I choose create a dashboard in splunk server related to failed login attempts
+In this step I choose create a basic dashboard in splunk server related to failed login attempts.
+I write an SPL related to authentication failure , which tells that login failure because of incorrect passward
 
 
 
