@@ -53,8 +53,10 @@ To implement a real-time security monitoring system by integrating Snort IDS wit
 
   ### STEPS
 
-  I’ll be installing and configuring Splunk’s universal forwarder, Snort in the ubuntu virtual machine as well as a Splunk enterpriser server in windows from scratch in the following steps
+  I’ll be installing and configuring Splunk’s universal forwarder, Snort in the ubuntu virtual machine as well as a Splunk enterpriser server in windows from scratch in the following steps.
 
+  ## NOTE: The actual integration of Snort with the real-time monitoring SIEM solution begins at Step 11. Up to Step 10, we will focus on building the real-time monitoring SIEM solution
+  
   ### Step 1
   ## Downloading and Installing splunk enterpriser
 
@@ -238,13 +240,71 @@ The command "ssh user@ip_address" is used to initiate an SSH (Secure Shell) conn
 when we click on the activity we can see triggered  alerts click on that to see Real-Time Alerts 
 ![image](https://github.com/user-attachments/assets/af15d67c-3be4-4b32-8268-d49218b6ab93)
 
-When we Navigate to the Dashboard we can see rhost(attacking machine) ip address:
+When we navigate to the Dashboard we can see rhost(attacking machine) ip address:
 
 ![image](https://github.com/user-attachments/assets/183f6dba-faa0-401f-b128-4acb4c4933a4)
 
+### STEP 11
+### Integrating snort with the real-time monitoring SIEM solution starts from here after installation of snort in both server and client.
 
+Install the snort app in splunk server by click on the app and then find more apps as below:
 
+![image](https://github.com/user-attachments/assets/619bb2eb-3a64-4a8c-bac1-22dd92d3803a)
 
+search for snort app and click on install as follows:
+
+![image](https://github.com/user-attachments/assets/5e398145-dc7f-48bc-957e-353e110f27f6)
+
+it will ask for credentials and click on agree and install
+
+![image](https://github.com/user-attachments/assets/a2f4a947-5699-4f9d-9964-00c9e0dba31f)
+we are done with the installation of snort in splunk server
+![image](https://github.com/user-attachments/assets/86aa1805-173b-4bf9-86fe-266b6bc3a3df)
+
+We can see Snort Alert for Splunk app in the home of the server.
+
+![image](https://github.com/user-attachments/assets/e306a0b5-0cd2-4606-b278-352e6182e547)
+
+When we click on that we can see zero traffick , because we are not done with the installation of snort in ubuntu virtual machine and integration of it with splunk universal forwarder.
+
+![image](https://github.com/user-attachments/assets/878ab85a-9601-41bf-8bfb-6d065b10196f)
+
+### STEP 12
+## Install the snort app in Ubuntu virtual machine 
+The installation process for snort varies depending on the oprating system,Given below is a general guide for installing snort in ubutu operating systems.
+
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt install snort 
+![image](https://github.com/user-attachments/assets/4e2f76fa-484e-410c-8e5c-a545bfd53fc9)
+
+To confirm it's installation use the command "sudo snort -V"
+![image](https://github.com/user-attachments/assets/f5683324-2413-4e26-b0fb-769950f06752)
+
+or use "sudo service snort status"
+
+![image](https://github.com/user-attachments/assets/67aba278-c120-438a-b6b9-8675d2e9c931)
+
+Stop the snort sevices temporarily
+
+![image](https://github.com/user-attachments/assets/23992bcc-cdc4-42dc-a328-a3cda52d7893)
+
+### STEP 13
+
+## Configuring Snort and integrate it with the Universal Forwarder to send data to the Splunk server
+Use the following command's
+sudo su
+cd /opt/splunkforwarder/etc/apps/search/local
+ls (you will see inputs.conf)
+cat inputs.conf
+
+![image](https://github.com/user-attachments/assets/34b01eb2-29c2-446f-9375-bc6aa18092c2)
+
+Open another terminal and search for snort.log, where Snort stores its logs,by using following commands:
+cd /var/log/snort
+ls
+we can see snort.log file 
+![image](https://github.com/user-attachments/assets/70361b55-449a-463c-afe7-ff34c1b4ae4a)
 
 
 
