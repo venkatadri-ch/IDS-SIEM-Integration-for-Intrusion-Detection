@@ -315,6 +315,8 @@ we can see snort.log file
 
 
 
+
+
   
 
 
