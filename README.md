@@ -272,7 +272,7 @@ When we click on that we can see zero traffick , because we are not done with th
 ### STEP 12
 ## Install the snort app in Ubuntu virtual machine 
 The installation process for snort varies depending on the oprating system,Given below is a general guide for installing snort in ubutu operating systems.
-
+ # Use this link to install snort manually in linux distributions https://github.com/venkatadri-ch/Snort-Installation/blob/main/README.md
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt install snort 
