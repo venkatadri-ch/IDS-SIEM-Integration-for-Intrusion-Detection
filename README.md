@@ -306,21 +306,65 @@ ls
 we can see snort.log file 
 ![image](https://github.com/user-attachments/assets/70361b55-449a-463c-afe7-ff34c1b4ae4a)
 
+TO add snort logs to the splunk universal forwarder , use the command 
+sudo ../../../../bin/splunk add monitor /var/log/snort
+OR go to the home directory "sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/snort
 
+![image](https://github.com/user-attachments/assets/b8c96714-fedf-457d-b118-e7cd45220358)
+It will ask for credentilas of splunk universal forwarder , so give them
+![image](https://github.com/user-attachments/assets/abe6082e-d6cf-4589-88f9-c06067bcd566)
 
+we need to edit the inputs.conf as below:
 
+![image](https://github.com/user-attachments/assets/7d478001-0db8-4f17-9410-8c87d2f75d7e)
 
+Restarting the splunk universal forwarder required, use following command to restart the splunk universal forwarder
+sudo ../../../../bin/splunk restart 
 
+![image](https://github.com/user-attachments/assets/a1b96817-8d7c-4f90-ae39-d14ba3c1822a)
+ It's time to run the snort , use the following command to run the snort:
+sudo snort -i enp0s3 -c /etc/snort/snort.conf -l /var/log/snort/ -A full -D
+Note:use "snort -help" to understand the command
 
+![image](https://github.com/user-attachments/assets/202bc493-f1d3-4378-b06a-0ed6805be999)
 
+ We are done with integration of snort with splunk solution , so check once by searching : index=main source="snort" in splunk server
 
+![image](https://github.com/user-attachments/assets/f55d1312-65e8-4922-bda8-05291ea5e5b5)
 
+### STEP 14
 
+"Testmynids" is a project on GitHub designed to test network intrusion detection systems (NIDS) like Snort, Suricata, etc
 
-  
+![image](https://github.com/user-attachments/assets/9d1f3e23-127e-4f15-8960-0eba9c483aaf)
 
+when we open the link, we can see tmNIDS, click on that  
 
-  
+![image](https://github.com/user-attachments/assets/fd72967d-5dc4-479a-901b-dfbfbe5f4a41)
+
+And copy the code 
+
+![image](https://github.com/user-attachments/assets/622f4e39-d0d7-4d9a-99af-e5816ccfb6b2)
+
+paste it in separate file and make it executable by using command:chmod +x testsnort as below:
+
+![image](https://github.com/user-attachments/assets/024113bf-499e-45af-8b35-2a2cff4d1b72)
+ Note: we can install  the script by using normal method like by using command:git clone link
+To run the script use the command "./testsnort" . I choose CHAOS mode :
+ 
+ ![image](https://github.com/user-attachments/assets/350fc9f2-d1dd-421e-ba57-03556d2d6194)
+### step 15
+open the snort app in server and go to the snort event summary, there we can see bad traffick as below:
+![image](https://github.com/user-attachments/assets/e830cfcd-f227-450c-9a56-4f973f6aa783)
+
+![image](https://github.com/user-attachments/assets/5f7e9909-a54a-4d14-81f4-10e73954886c)
+
+Go to the Snort event search , there we can see source ip's and destination ip's 
+
+![image](https://github.com/user-attachments/assets/4310a056-6669-49b5-ba18-44c29ae010a7)
+
+![image](https://github.com/user-attachments/assets/c976efe0-fdb7-4e01-bef8-a4ae866fc5b9)
+
   
   
   
